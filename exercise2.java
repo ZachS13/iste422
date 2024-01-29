@@ -15,6 +15,8 @@ public class exercise2 {
     public ArrayList<personInformation> readData() {
         ArrayList<personInformation> people = new ArrayList<>();
         // open the file
+
+        JSONArray jsonArray = new JSONArray(jsonStr);
         
         // Go through the file
             // extract the data into personInformation
