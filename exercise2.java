@@ -14,7 +14,7 @@ public class exercise2 {
     public ArrayList<personInformation> readData() {
         ArrayList<personInformation> people = new ArrayList<>();
         JReader read = new JReader(this.filename);
-        read.parseJSON();  
+        people = read.parseJSON();  
         return people;
     }
 
@@ -41,7 +41,7 @@ public class exercise2 {
                 // if there is a name and creditcard
                 String name = info.getName();
                 String card = info.getCreditcard();
-                if(!name.equals("") && !card.equals("")){
+                if(!name.equals("") && !card.equals("null")){
                     // write in the file name,creditcard 
                     String line = name + "," + card;
                     writer.println(line);
@@ -50,7 +50,7 @@ public class exercise2 {
             }
             writer.close();        
         } catch (IOException e) {
-            // squash
+            System.out.println(e);
         }
 
         // return if the file is written
@@ -58,7 +58,7 @@ public class exercise2 {
     }
 
     public static void main(String[] args) {
-        exercise2 ex = new exercise2("data.json");
+        exercise2 ex = new exercise2("smaller.json");
 
         personInformation p1 = new personInformation("one", null, null, null, null, "123-123-1234");
         personInformation p2 = new personInformation("two", null, null, null, null, "321-321-4321");
@@ -66,7 +66,7 @@ public class exercise2 {
         test.add(p1);
         test.add(p2);
 
-        ex.writeReport(test);
-        ex.readData();
+        ArrayList<personInformation> test2 = ex.readData();
+        ex.writeReport(test2);
     }
 }   
