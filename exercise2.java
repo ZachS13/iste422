@@ -1,4 +1,3 @@
-package iste422;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -14,15 +13,8 @@ public class exercise2 {
 
     public ArrayList<personInformation> readData() {
         ArrayList<personInformation> people = new ArrayList<>();
-        // open the file
-
-        JSONArray jsonArray = new JSONArray(jsonStr);
-        
-        // Go through the file
-            // extract the data into personInformation
-            // add the person to the array.
-
-        // return the array   
+        JReader read = new JReader(this.filename);
+        read.parseJSON();  
         return people;
     }
 
@@ -75,5 +67,6 @@ public class exercise2 {
         test.add(p2);
 
         ex.writeReport(test);
+        ex.readData();
     }
 }   

@@ -1,4 +1,3 @@
-package iste422;
 public class personInformation {
     private String name;
     private String email;
