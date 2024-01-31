@@ -58,7 +58,7 @@ public class exercise2 {
     }
 
     public static void main(String[] args) {
-        exercise2 ex = new exercise2("smaller.json");
+        exercise2 ex = new exercise2("data.json");
 
         personInformation p1 = new personInformation("one", null, null, null, null, "123-123-1234");
         personInformation p2 = new personInformation("two", null, null, null, null, "321-321-4321");
