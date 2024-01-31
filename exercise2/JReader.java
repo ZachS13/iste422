@@ -1,3 +1,4 @@
+package exercise2;
 public class JReader {
 
     private String filename;
