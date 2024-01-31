@@ -13,7 +13,7 @@ public class exercise2 {
 
     public ArrayList<personInformation> readData() {
         ArrayList<personInformation> people = new ArrayList<>();
-        JReader read = new JReader(this.filename);
+        superProperJSON read = new superProperJSON(this.filename);
         people = read.parseJSON();  
         return people;
     }
