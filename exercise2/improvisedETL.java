@@ -1,4 +1,6 @@
 package exercise2;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -23,7 +25,22 @@ public class improvisedETL {
     private boolean writeFile() {
         boolean written = false;
         String newFilename = getNewFilename();
-        // write the file here
+        newFilename += ".csv";
+
+        try {
+            // creates the new file
+            PrintWriter writer = new PrintWriter(newFilename, "UTF-8");
+
+            // check if the name and the creditcard are not null / blank
+                // true add it to the file
+
+                // false do not add to the file 
+
+            written = true;
+            writer.close();        
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         return written;
     }
 
