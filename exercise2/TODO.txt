@@ -1,0 +1,5 @@
+Need to find a way to parse the JSON data
+
+Once parsed, need to find a way to read the data
+
+Once able to read, go through the data and add the correct entries to the file.
