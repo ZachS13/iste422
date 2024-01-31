@@ -3,10 +3,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class improvisedETL {
     
     private String filename;
+    private ArrayList<personInformation> peopleList;
 
     public improvisedETL(String filename) {
         this.filename = filename;
@@ -30,12 +32,18 @@ public class improvisedETL {
         try {
             // creates the new file
             PrintWriter writer = new PrintWriter(newFilename, "UTF-8");
-
-            // check if the name and the creditcard are not null / blank
-                // true add it to the file
-
-                // false do not add to the file 
-
+            // For each person
+            for (personInformation info : peopleList) {
+                // if there is a name and creditcard
+                String name = info.getName();
+                String card = info.getCreditcard();
+                if (!name.equals("") && !card.equals("null")) {
+                    // write in the file name,creditcard
+                    String line = name + "," + card;
+                    writer.println(line);
+                    writer.flush();
+                }
+            } 
             written = true;
             writer.close();        
         } catch (IOException e) {
