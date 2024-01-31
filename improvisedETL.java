@@ -32,4 +32,11 @@ public class improvisedETL {
         return read;
     }
 
+    public boolean completeExercise() {
+        boolean completed = false;
+        readData();
+        writeFile();
+        return completed;
+    }
+
 }

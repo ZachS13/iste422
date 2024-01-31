@@ -1,3 +1,4 @@
+package extra;
 public class personInformation {
     private String name;
     private String email;
