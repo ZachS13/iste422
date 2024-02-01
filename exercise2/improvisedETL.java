@@ -12,6 +12,7 @@ public class improvisedETL {
 
     public improvisedETL(String filename) {
         this.filename = filename;
+        completeExercise();
     }
 
     private String getNewFilename() {
@@ -65,4 +66,7 @@ public class improvisedETL {
         return completed;
     }
 
+    public static void main(String[] args) {
+        new improvisedETL("data.json");
+    }
 }
