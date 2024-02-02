@@ -37,7 +37,7 @@ public class improvisedETL {
         boolean written = false;
         String newFilename = getNewFilename();
         newFilename += ".csv";
-        newFilename = "exercise2/" + newFilename;
+        newFilename = "exercise2/ex" + newFilename;
 
         try {
             // creates the new file
@@ -98,6 +98,6 @@ public class improvisedETL {
     }
 
     public static void main(String[] args) {
-        new improvisedETL("exercise2/data.json");
+        new improvisedETL("extra/smaller.json");
     }
 }

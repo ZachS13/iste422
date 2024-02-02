@@ -1,22 +1,18 @@
 package extra;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class exercise2 {
     private String filename;
     
     public exercise2(String filename) {
         this.filename = filename;
-    }
-
-    public ArrayList<personInformation> readData() {
-        ArrayList<personInformation> people = new ArrayList<>();
-        superProperJSON read = new superProperJSON(this.filename);
-        people = read.parseJSON();  
-        return people;
     }
 
     private String getNewFilename() {
@@ -33,7 +29,7 @@ public class exercise2 {
         boolean didFileWrite = false;
         // name of the new file
         String newFilename = getNewFilename();
-        newFilename += ".csv";
+        newFilename += "ex.csv";
 
         try {
             PrintWriter writer = new PrintWriter(newFilename, "UTF-8");
@@ -58,8 +54,69 @@ public class exercise2 {
         return didFileWrite;
     }
 
+    public ArrayList<personInformation> readData() {
+        ArrayList<personInformation> peopleData = new ArrayList<>();
+        try {
+            // open the file
+            File myObj = new File(this.filename);
+            Scanner myReader = new Scanner(myObj);
+            // read the file
+            int count = 0;
+            String name = null, email = null, city = null, mac = null, timestamp = null, creditcard = null;
+            while (myReader.hasNextLine()) {
+                String line = myReader.nextLine();
+                line = line.replaceAll(" ", "");
+                line = line.replaceAll(",", "");
+                char[] value = line.toCharArray();
+                // find the first open bracket
+                if(value[0] == '{') {
+                    count ++;
+                    name = null;
+                    email = null;
+                    city = null;
+                    mac = null;
+                    timestamp = null;
+                    creditcard = null;
+                }
+                // make sure the bracket gets closed
+                else if (value[0] == '}') {
+                    count--;
+                    personInformation person = new personInformation(name, email, city, mac, timestamp, creditcard);
+                    System.out.println(name + " was added to the array");
+                    peopleData.add(person);
+                }
+                // read the data in between the brackets
+                else if(count == 1) {
+                    String[] keyValue = line.split("\":");
+                    String key = keyValue[0].replaceAll("\"", "");
+                    String val = keyValue[1].replaceAll("\"", "");
+                    // name, email, city, mac, timestamp, creditcard
+                    if(key.equals("name")) {
+                        name = val;
+                    } else if(key.equals("email")){
+                        email = val;
+                    } else if(key.equals("city")){ 
+                        city = val;
+                    } else if(key.equals("mac")){
+                        mac = val;
+                    } else if (key.equals("timestamp")) {
+                        timestamp = val;
+                    } else if (key.equals("creditcard")) {
+                        creditcard = val;
+                    }
+                }
+            }
+            myReader.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+            System.out.println(this.filename);
+        }
+        return peopleData;
+    }
+
     public static void main(String[] args) {
-        exercise2 ex = new exercise2("data.json");
+        exercise2 ex = new exercise2("extra/smaller.json");
 
         personInformation p1 = new personInformation("one", null, null, null, null, "123-123-1234");
         personInformation p2 = new personInformation("two", null, null, null, null, "321-321-4321");
