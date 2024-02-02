@@ -1,1 +1,38 @@
 adding something to hopefully only push in the branch extra
+
+
+if(person.get("name").equals(null)) {
+                    name = "null";
+                } else {
+                    name = (String) person.get("name");
+                }
+                String email = "";
+                if (person.get("name").equals(null)) {
+                    email = "null";
+                } else {
+                    email = (String) person.get("email");
+                }
+                String city = "";
+                if (person.get("name").equals(null)) {
+                    city = "null";
+                } else {
+                    city = (String) person.get("city");
+                }
+                String mac = "";
+                if (person.get("name").equals(null)) {
+                    mac = "null";
+                } else {
+                    mac = (String) person.get("mac");
+                }
+                String timestamp = "";
+                if (person.get("name").equals(null)) {
+                    timestamp = "null";
+                } else {
+                    timestamp = (String) person.get("timestamp");
+                }
+                String creditcard = "";
+                if (person.get("name").equals(null)) {
+                    creditcard = "null";
+                } else {
+                    creditcard = (String) person.get("creditcard");
+                }
