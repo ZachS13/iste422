@@ -1,0 +1,10 @@
+{
+    "name": "someproject", 
+    "version": "0.0.1",
+    "main": "app.js",
+    "scripts": {
+        "runapp": "node .",
+        "docker:build": "docker build up",
+        "predocker:build": "rm -rf ./build"
+    }
+}
