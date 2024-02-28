@@ -1,4 +1,4 @@
-package iste422.HW;
+package HW;
 
 public class Main {
     public static void main(String[] args) {
